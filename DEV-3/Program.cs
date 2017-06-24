@@ -3,32 +3,32 @@
 
 namespace DEV_3
 {
-    class Fibonacci_numbers
+    class FibonacciNumber
     {
         static void Main()
         {
             try
             {
                 Console.WriteLine("Enter a number: ");
-                int number_to_check = int.Parse(Console.ReadLine());
-                if (number_to_check < 0)
-                 {
+                int numberToCheck = int.Parse(Console.ReadLine());
+                if (numberToCheck < 0)
+                {
                     Console.Write("It's a negative number. Try again: ");
                     Main();
-                 }
+                }
                 else
                 {
                     bool result = false;
-                    Fibonacci_numbers number = new Fibonacci_numbers();
-                    result = number.Check_for_Fibonacci_numbers(number_to_check);
-                    if (result || number_to_check == 0)
+                    FibonacciNumber numbersFibonacci = new FibonacciNumber();
+                    result = numbersFibonacci.CheckForFibonacciNumber(numberToCheck);
+                    if (result || numberToCheck == 0)
                     {
-                        Console.WriteLine("This number is Fibonucci number.");
+                        Console.WriteLine("This number is Fibonacci number.");
                         Console.ReadKey();
                     }
                     else
                     {
-                        Console.WriteLine("This number is not Fibonucci number.");
+                        Console.WriteLine("This number is not Fibonacci number.");
                         Console.ReadKey();
                     }
                 }
@@ -41,7 +41,7 @@ namespace DEV_3
                 Main();
             }
 
-            catch(OverflowException ex)
+            catch (OverflowException ex)
             {
                 Console.WriteLine("Invalid value: Please enter a lower number!\n");
                 Console.WriteLine("Error: " + ex.Message + "\n\n");
@@ -49,25 +49,25 @@ namespace DEV_3
             }
 
         }
-       internal bool Check_for_Fibonacci_numbers(int number_to_check)
+        internal bool CheckForFibonacciNumber(int numberToCheck)
         {
             int previos1 = 0;
             int previos2 = 0;
             int subsequent = 1;
-            bool verification_for_Fibonacci = false;
+            bool verificationForFibonacci = false;
 
-            for (int i = 0; i < number_to_check; i++)
+            for (int i = 0; i <= numberToCheck; i++)
             {
                 previos1 = previos2;
                 previos2 = subsequent;
                 subsequent = previos1 + previos2;
-                if (number_to_check == subsequent)
+                if (numberToCheck == subsequent)
                 {
-                    verification_for_Fibonacci = true;
+                    verificationForFibonacci = true;
                 }
             }
 
-            return verification_for_Fibonacci;
+            return verificationForFibonacci;
         }
 
     }

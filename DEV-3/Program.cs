@@ -7,47 +7,51 @@ namespace DEV_3
     {
         static void Main()
         {
-            try
+            bool duration = true;
+            while (duration)
             {
-                Console.WriteLine("Enter a number: ");
-                int numberToCheck = int.Parse(Console.ReadLine());
-                if (numberToCheck < 0)
+                try
                 {
-                    Console.Write("It's a negative number. Try again: ");
-                    Main();
-                }
-                else
-                {
-                    bool result = false;
-                    FibonacciNumber numbersFibonacci = new FibonacciNumber();
-                    result = numbersFibonacci.CheckForFibonacciNumber(numberToCheck);
-                    if (result || numberToCheck == 0)
+                    Console.WriteLine("Enter a number: ");
+                    int numberToCheck = int.Parse(Console.ReadLine());
+                    if (numberToCheck < 0)
                     {
-                        Console.WriteLine("This number is Fibonacci number.");
-                        Console.ReadKey();
+                        Console.Write("It's a negative number. Try again: ");
+                        Main();
                     }
                     else
                     {
-                        Console.WriteLine("This number is not Fibonacci number.");
-                        Console.ReadKey();
+                        bool result = false;
+                        FibonacciNumber numbersFibonacci = new FibonacciNumber();
+                        result = numbersFibonacci.CheckForFibonacciNumber(numberToCheck);
+                        if (result || numberToCheck == 0)
+                        {
+                            Console.WriteLine("This number is Fibonacci number.");
+                            Console.ReadKey();
+                        }
+                        else
+                        {
+                            Console.WriteLine("This number is not Fibonacci number.");
+                            Console.ReadKey();
+                        }
                     }
                 }
-            }
 
-            catch (FormatException ex)
-            {
-                Console.WriteLine("It's not a number!!\n");
-                Console.WriteLine("Error: " + ex.Message + "\n\n");
-                Main();
-            }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("It's not a number!!\n");
+                    Console.WriteLine("Error: " + ex.Message + "\n\n");
+                    continue;
+                }
 
-            catch (OverflowException ex)
-            {
-                Console.WriteLine("Invalid value: Please enter a lower number!\n");
-                Console.WriteLine("Error: " + ex.Message + "\n\n");
-                Main();
+                catch (OverflowException ex)
+                {
+                    Console.WriteLine("Invalid value: Please enter a lower number!\n");
+                    Console.WriteLine("Error: " + ex.Message + "\n\n");
+                    continue;
+                }
+                duration = false;
             }
-
         }
         internal bool CheckForFibonacciNumber(int numberToCheck)
         {

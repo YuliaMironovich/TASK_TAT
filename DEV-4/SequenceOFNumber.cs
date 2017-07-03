@@ -4,16 +4,15 @@ namespace DEV_4
 {
    public class SequenseOfNumbers
     {
-       public int[] ConvertToInt(string[] stringSequence)
+       public int[] ConvertToInt(string previous, string next)
        {
-          int[] sequence = new int[stringSequence.Length];
-          for (int i = 0; i < stringSequence.Length; i++)
-          {
-              sequence[i] = int.Parse(stringSequence[i]);
-          }
-          return sequence; 
+          int[] pair = new int[2];
+          pair[0] = int.Parse(previous);
+          pair[1] = int.Parse(next);
+          return pair; 
        }
-        public bool IsSequenceNondecreasing(int[] sequence)
+
+        public bool IsFulfilmentNonDecreasing(int[] sequence)
         {
             for (int i = 0; i < sequence.Length - 1 ; i++)
             {
@@ -24,18 +23,28 @@ namespace DEV_4
             }
             return true;
         }
-   public void OutputOfResult(bool result)
-        {
-            if (result)
-            {
-                Console.WriteLine("This sequence is non - decreasing.");
+
+
+       public void IsNonDecreasing(string [] args)
+        {       
+            bool verification = true;
+            int count = 0;
+            OperationWithConsole operationWithConsole = new OperationWithConsole();
+            if (args.Length != 0)
+            { 
+                while(verification && (count < (args.Length - 1)))
+                {
+                  int[] elements =  ConvertToInt(args[count], args[count + 1]);
+                  verification = IsFulfilmentNonDecreasing(elements);
+                  count++;
+                }
+                operationWithConsole.OutputOfResult(verification);
             }
             else
             {
-                Console.WriteLine("This sequence is not non - decreasing.");
-            }
-            Console.ReadKey();
+               verification = operationWithConsole.CheckInputNumbers();
+               operationWithConsole.OutputOfResult(verification);
+            }                
         }
-
     }
 }

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackTask", "StackTask\StackTask.csproj", "{A7195C20-9F93-4810-894B-EAC63FA6CD7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stack.Test", "Stack.Test\Stack.Test.csproj", "{DE5ECE89-4111-4395-A404-A96CA9558C23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7195C20-9F93-4810-894B-EAC63FA6CD7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7195C20-9F93-4810-894B-EAC63FA6CD7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7195C20-9F93-4810-894B-EAC63FA6CD7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7195C20-9F93-4810-894B-EAC63FA6CD7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5ECE89-4111-4395-A404-A96CA9558C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5ECE89-4111-4395-A404-A96CA9558C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5ECE89-4111-4395-A404-A96CA9558C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5ECE89-4111-4395-A404-A96CA9558C23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F114B996-B2A2-4F0B-9BC2-1DECC5EE2FF8}
+	EndGlobalSection
+EndGlobal

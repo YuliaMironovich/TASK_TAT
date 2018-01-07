@@ -1,4 +1,6 @@
-﻿namespace DEV_13
+﻿using System.Collections.Generic;
+
+namespace DEV_13
 {
    public class Context
     {
@@ -16,9 +18,10 @@
         }
 
         //Start execution of the algorithm of the chosen strategy
-        public void ExecuteOperation(InitialCondition initialCondition)
+        public List<List<int>> ExecuteOperation(InitialCondition initialCondition)
         {
-            selectedStrategy.Algorithm(initialCondition);
+            List<List<int>> result =  selectedStrategy.Algorithm(initialCondition);
+            return result;
         }
     }
 }

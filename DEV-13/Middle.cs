@@ -1,8 +1,9 @@
 ﻿namespace DEV_13
 {
-   public class Middle
+    //Class contain information about Middle employer: salary and productivity.
+    public class Middle
     {
-        public int salary { get; } = 1000;
-        public int productivity { get; } = 800;
+        public int Salary { get; } = 1000;
+        public int Productivity { get; } = 800;
     }
 }

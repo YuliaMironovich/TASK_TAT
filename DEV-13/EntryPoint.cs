@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DEV_13
 {
@@ -13,11 +14,12 @@ namespace DEV_13
                 Data data = new Data();
                 InitialCondition initialCondition = new InitialCondition();
                 initialCondition = data.Input(initialCondition);
-                CheckerOfCondition checkerOfCondition = new CheckerOfCondition();
-                if (checkerOfCondition.IfCorrect(initialCondition))
+                ValidatorOfCondition checkerOfCondition = new ValidatorOfCondition();
+                if (checkerOfCondition.IfValid(initialCondition))
                 {
                     Context context = new Context(initialCondition.criterion);
-                    context.ExecuteOperation(initialCondition);
+                    List<List<int>> result = context.ExecuteOperation(initialCondition);
+                    data.Output(result);
                     continueProgram = false;     
                 }
                 else
@@ -25,8 +27,6 @@ namespace DEV_13
                     Console.WriteLine(MESSAGE);
                     continue;
                 }
-                Console.ReadKey();
-                Console.ReadKey();
             }  
         }
     }

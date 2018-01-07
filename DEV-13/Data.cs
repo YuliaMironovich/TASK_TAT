@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DEV_13
 {
@@ -11,6 +12,7 @@ namespace DEV_13
         private const string CRITERION3 = "ENTER '3' IF CRITERION IS MINIMUM NUMBER OF EMPLOYEES IS HIGHER THAN JUNIOR FOR FIXED PRODUCTIVITY";
         private const string NO_CRITERION = "YOU DIDN'T CHOOSE CRITERION. TRY AGAIN:";
         private const string ERROR = "CHECK DATA FORMAT! TRY AGAIN: ";
+        private const string TEAM_NOT_FOUND = "Cann't create team with your productivity and cash.";
 
         // Set input data and return choosed criterion
         public InitialCondition Input(InitialCondition initialCondition)
@@ -59,6 +61,26 @@ namespace DEV_13
                 continueProgram = false;
             }
             return initialCondition;
+        }
+
+        //Output posible teams
+        public void Output(List<List<int>> countOfEmployee)
+        {
+            if (countOfEmployee[0].Count != 0)
+            {
+                for (int i = 0; i < countOfEmployee[0].Count; i++)
+                {
+                    Console.WriteLine("Your Team:");
+                    Console.WriteLine("Count of Junior - " + countOfEmployee[0][i]);
+                    Console.WriteLine("Count of Middle - " + countOfEmployee[1][i]);
+                    Console.WriteLine("Count of Senior - " + countOfEmployee[2][i]);
+                    Console.WriteLine("Count of Lead - " + countOfEmployee[3][i]);
+                }
+            }
+            else
+            {
+                Console.WriteLine(TEAM_NOT_FOUND);
+            }
         }
     }
 }

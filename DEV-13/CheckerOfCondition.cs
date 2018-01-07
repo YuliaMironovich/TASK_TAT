@@ -1,18 +1,12 @@
 ﻿namespace DEV_13
 {
-    class CheckerOfCondition
+  //Class contains methods which check for validity of contidition.
+    public class ValidatorOfCondition
     {
         //Check data for the correctness
-        public bool IfCorrect(InitialCondition initialCondition)
+        public bool IfValid(InitialCondition initialCondition)
         {
-            if (IfCorrectCash(initialCondition) && IfCorrectProductivity(initialCondition))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return IfCorrectCash(initialCondition) && IfCorrectProductivity(initialCondition);           
         }
 
         //Check for the correctness of the cache
@@ -20,7 +14,7 @@
         public bool IfCorrectCash(InitialCondition initialCondition)
         {
             Junior junior = new Junior();
-            if (initialCondition.cash >= junior.salary)
+            if (initialCondition.cash >= junior.Salary)
             {
                 return true;
             }

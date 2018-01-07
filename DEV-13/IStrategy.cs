@@ -1,7 +1,9 @@
-﻿namespace DEV_13
+﻿using System.Collections.Generic;
+namespace DEV_13
 {
-   public interface IStrategy
+    //Class implements pattern Strategy.
+    public interface IStrategy
     {
-        void Algorithm(InitialCondition initialCondition);
+        List<List<int>> Algorithm(InitialCondition initialCondition);
     }
 }

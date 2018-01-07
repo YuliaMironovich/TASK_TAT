@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 namespace DEV_13
 {
-   public class MinNumberOfEmployee: IStrategy
+    //Third algorithm of employer choise: by min number of employer bigger than Junior.
+    public class MinNumberOfEmployee: IStrategy
     {
         private const string TEAM_NOT_FOUND = "Cann't create team with your productivity and cash.";
 
         //Find teams by the third cryterion
-        public void Algorithm(InitialCondition initialCondition)
+        public List<List<int>> Algorithm(InitialCondition initialCondition)
         {
             Junior junior = new Junior();
             Middle middle = new Middle();
@@ -21,10 +22,10 @@ namespace DEV_13
             List<List<int>> countOfEmployee = new List<List<int>>();
             List<int> cost = new List<int>();
             List<int> productivity = new List<int>();
-            int maxCountJunior = initialCondition.cash / junior.salary;
-            int maxCountMiddle = initialCondition.cash / middle.salary;
-            int maxCountSenior = initialCondition.cash / senior.salary;
-            int maxCountLead = initialCondition.cash / lead.salary;
+            int maxCountJunior = initialCondition.cash / junior.Salary;
+            int maxCountMiddle = initialCondition.cash / middle.Salary;
+            int maxCountSenior = initialCondition.cash / senior.Salary;
+            int maxCountLead = initialCondition.cash / lead.Salary;
             for (int i = 0; i <= maxCountLead; i++)
             {
                 for (int j = 0; j <= maxCountSenior; j++)
@@ -49,9 +50,12 @@ namespace DEV_13
             productivity = CalculateProductivityOfTeams(productivity, junior, middle, senior, lead, countOfEmployee);
             int minEmployee = Int32.MaxValue;
             minEmployee = SearchMinCountOfNotJunior(minEmployee, countOfEmployee, initialCondition, productivity, cost);
-            List<int> team = new List<int>();
-            team = FindPossibleTeams(team, countOfEmployee, initialCondition, productivity, cost, minEmployee);
-            Output(team, countOfEmployee);
+            List<int> numberOfTeam = new List<int>();
+            numberOfTeam = FindPossibleTeams(numberOfTeam, countOfEmployee, initialCondition, productivity, cost, minEmployee);
+            List<List<int>> team = new List<List<int>>();
+            team = ChooseTeam(numberOfTeam, countOfEmployee, team);
+            Output(numberOfTeam, countOfEmployee);
+            return team;
         }
 
         //countOfEmployee[0] = countOfJunior, countOfEmployee[1] = countOfMiddle, countOfEmployee[2] = countOfSenior, countOfEmployee[3] = countOfLead
@@ -60,8 +64,8 @@ namespace DEV_13
         {
             for (int i = 0; i < countOfEmployee[0].Count; i++)
             {
-                cost.Add(countOfEmployee[0][i] * junior.salary + countOfEmployee[1][i] * middle.salary +
-                         countOfEmployee[2][i] * senior.salary + countOfEmployee[3][i] * lead.salary);
+                cost.Add(countOfEmployee[0][i] * junior.Salary + countOfEmployee[1][i] * middle.Salary +
+                         countOfEmployee[2][i] * senior.Salary + countOfEmployee[3][i] * lead.Salary);
             }
             return cost;
         }
@@ -71,8 +75,8 @@ namespace DEV_13
         {
             for (int i = 0; i < countOfEmployee[0].Count; i++)
             {
-                productivity.Add(countOfEmployee[0][i] * junior.productivity + countOfEmployee[1][i] * middle.productivity +
-                         countOfEmployee[2][i] * senior.productivity + countOfEmployee[3][i] * lead.productivity);
+                productivity.Add(countOfEmployee[0][i] * junior.Productivity + countOfEmployee[1][i] * middle.Productivity +
+                         countOfEmployee[2][i] * senior.Productivity + countOfEmployee[3][i] * lead.Productivity);
             }
             return productivity;
         }
@@ -102,6 +106,20 @@ namespace DEV_13
                 {
                     team.Add(i);
                 }
+            }
+            return team;
+        }
+
+        //Choose and save possible teams
+        private List<List<int>> ChooseTeam(List<int> numberOfTeam, List<List<int>> countOfEmployee, List<List<int>> team)
+        {
+            for (int i = 0; i < numberOfTeam.Count; i++)
+            {
+
+                team[0][i] = countOfEmployee[0][numberOfTeam[i]];
+                team[1][i] = countOfEmployee[1][numberOfTeam[i]];
+                team[2][i] = countOfEmployee[2][numberOfTeam[i]];
+                team[3][i] = countOfEmployee[3][numberOfTeam[i]];
             }
             return team;
         }
